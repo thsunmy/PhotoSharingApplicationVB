@@ -9,16 +9,18 @@ End Code
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Create</title>
+    <title>Edit</title>
 </head>
 <body>
-    @Using (Html.BeginForm()) 
+    @Using (Html.BeginForm())
         @Html.AntiForgeryToken()
         
         @<div class="form-horizontal">
             <h4>Photo</h4>
             <hr />
             @Html.ValidationSummary(True, "", New With { .class = "text-danger" })
+            @Html.HiddenFor(Function(model) model.PhotoID)
+    
             <div class="form-group">
                 @Html.LabelFor(Function(model) model.Title, htmlAttributes:= New With { .class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -69,7 +71,7 @@ End Code
     
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Create" class="btn btn-default" />
+                    <input type="submit" value="Save" class="btn btn-default" />
                 </div>
             </div>
         </div>
